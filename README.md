@@ -27,4 +27,6 @@ TAI:
 2. Kirjaudu sisään osoitteesta /
 3. Nyt voit hallita organisaatiotasi, luoda eventtejä, sessioita, huoneita yms.
 
-HUOM! Kaikki toiminnot eivät välttämättä toimi odotetusti : (.
+HUOM! Kaikki toiminnot eivät välttämättä toimi odotetusti : ( (ainakin:).
+- Session muokkaus
+- Huoneiden kapasiteettitaulukko
