@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../php/db.php';
-
+phpinfo();
 session_start();
 
 $errors = [];
