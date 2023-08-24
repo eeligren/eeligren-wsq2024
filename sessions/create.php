@@ -2,6 +2,7 @@
 
     require_once __DIR__ . '/../php/events.php';
     require_once __DIR__ . '/../php/sessions.php';
+    require_once __DIR__ . '/../php/channels.php';
     require_once __DIR__ . '/../php/rooms.php';
 
     if(!isset($_GET['id'])) header('location: /events/');
@@ -85,9 +86,17 @@
                     <div class="col-12 col-lg-4 mb-3">
                         <label for="selectRoom">Room</label>
                         <select class="form-control" id="selectRoom" required name="room">
-                            <?php foreach(fetch_rooms($eventData['id']) as $room) : ?>
-                                <option value=<?php echo $room['id']; ?>><?php echo $room['name']; ?></option>
-                            <?php endforeach; ?>
+                        <?php
+                            $channels = fetch_channels($eventData['id']);
+
+                            foreach($channels as $channel) {
+                                $rooms = get_room_by_channel($channel['id']);
+                                foreach($rooms as $r) {
+                                    echo '<option value='.$r['id'].'>'.$r['name'].'</option>';
+                                }
+                            }
+
+                        ?>
                         </select>
                     </div>
                 </div>

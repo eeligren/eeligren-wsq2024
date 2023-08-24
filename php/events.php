@@ -52,7 +52,7 @@ if(isset($_POST['edit'])) {
 
         $sql = "UPDATE events SET name='$name', slug='$slug', date='$date' WHERE id=$id";
         if(mysqli_query($conn, $sql)) {
-            header('location: /events/detail.php?event='.$id.'&success=Event successfully updated');
+            header('location: /events/detail.php?event='.$_GET['id'].'&event='.$id.'&success=Event successfully updated');
         } else {
             return header('location: /events/edit.php?id='.$_GET['id'].'&error=Error while creating event');
         }

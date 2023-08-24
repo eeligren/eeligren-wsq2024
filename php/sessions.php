@@ -13,17 +13,44 @@ if(isset($_POST['create_session'])) {
     $end = $_POST['end'];
     $description = $_POST['description'];
 
-    $eventId = $_GET['id'];
+    $eventId = $_GET['event'];
 
     //Checks if room is taken
-    //$sql = "SELECT id FROM session WHERE room_id=$room AND ((start <= ? AND end >= ?) OR (start <= ? AND end >= ?))";
+    //$sql = "SELECT id FROM session WHERE room_id=$room AND ((start <= AND end >=) OR (start <= AND end >=))";
     
-    $sql = "INSERT INTO sessions (room_id, title, description, speaker, start, end, type, cost) VALUES ('$room', '$title', $description, '$speaker', '$start', '$end', '$type', '$cost')";
+    $sql = "INSERT INTO sessions (room_id, title, description, speaker, start, end, type, cost) VALUES ($room, '$title', '$description', '$speaker', '$start', '$end', '$type', $cost)";
     if(mysqli_query($conn, $sql)) {
-        //return header('location: /events/detail.php?event='.$eventId.'&success=Session successfully created');
-        return header('location: /sessions/create.php?id='.$eventId.'&error=OK');
+        return header('location: /events/detail.php?event='.$eventId.'&success=Session successfully created');
     } else {
         return header('location: /sessions/create.php?id='.$eventId.'&error=Error while creating event'.mysqli_error($conn));
+    }
+
+}
+
+//edit_session
+
+if(isset($_POST['edit_session'])) {
+    $type = $_POST['type'];
+    $title = $_POST['title'];
+    $speaker = $_POST['speaker'];
+    $room = $_POST['room'];
+    $cost = $_POST['cost'];
+    $start = $_POST['start'];
+    $end = $_POST['end'];
+    $description = $_POST['description'];
+
+    $eventId = $_GET['event'];
+    $sessionId = $_GET['id'];
+
+    $startFormatted = date('Y-m-d H:i:s', strtotime($start));
+$endFormatted = date('Y-m-d H:i:s', strtotime($end));
+    
+    $sql = "UPDATE sessions SET title='$title', speaker='$speaker', room_id=$room, cost=$cost, start='$start', end='$end', description='$description' WHERE id=$sessionId";
+
+    if(mysqli_query($conn, $sql)) {
+        return header('location: /events/detail.php?event='.$eventId.'&success=Session successfully edited');
+    } else {
+        return header('location: /sessions/edit.php?event='.$eventId.'&id='.$sessionId.'&error=Error while editing event');
     }
 
 }

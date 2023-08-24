@@ -53,8 +53,12 @@
                 </div>
             </div>
 
-            <form class="needs-validation" novalidate action="events/detail.html">
-
+            <form class="needs-validation" method="POST">
+            <div class="row">
+                <?php
+                    if(isset($_GET['error'])) echo '<p>'.$_GET['error'].'</p>';
+                ?>
+                </div>
                 <div class="row">
                     <div class="col-12 col-lg-4 mb-3">
                         <label for="selectType">Type</label>
@@ -133,7 +137,7 @@
                 </div>
 
                 <hr class="mb-4">
-                <button class="btn btn-primary" type="submit">Save session</button>
+                <button class="btn btn-primary" type="submit" name="edit_session">Save session</button>
                 <a href="events/detail?event=<?php echo $eventData['id']; ?>" class="btn btn-link">Cancel</a>
             </form>
 

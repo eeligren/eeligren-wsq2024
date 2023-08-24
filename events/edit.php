@@ -76,7 +76,7 @@
 
                 <hr class="mb-4">
                 <button class="btn btn-primary" type="submit" name="edit">Save</button>
-                <a href="events/detail.php" class="btn btn-link">Cancel</a>
+                <a href="events/detail.php?event=<?php echo $eventData['id']; ?>" class="btn btn-link">Cancel</a>
             </form>
 
         </main>

@@ -20,6 +20,10 @@ Tunnukset ovat:
 - Email: demo1@worldskills.org
 - Pass: demopass1
 
+TAI:
+- Email: demo2@worldskills.org
+- Pass: demopass2
+
 2. Kirjaudu sisään osoitteesta /
 3. Nyt voit hallita organisaatiotasi, luoda eventtejä, sessioita, huoneita yms.
 
